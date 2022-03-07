@@ -144,18 +144,56 @@
 //     System.Console.WriteLine(string.Format("{0}, {1}, and {2} others like your post", likedBy[0], likedBy[1], likedBy.Count - MAXIMUM_LIKEDBY_NAMES));
 // };
 
-//REVERSE THE NAME
+// //REVERSE THE NAME
+// System.Console.WriteLine("Write down anything, and I'll reverse it for you!");
+// var userProvidedWord = System.Console.ReadLine();
+// if (string.IsNullOrWhiteSpace(userProvidedWord))
+// {
+//     System.Console.WriteLine("You didn't even write anything!");
+// }
+// else {
+//     var individualChars = userProvidedWord.ToCharArray();
+//     var reversedChars = (char[])individualChars.Clone();
+//     Array.Reverse(reversedChars);
+//     var reversedWord = new string(reversedChars);
+//     System.Console.WriteLine(reversedWord);
+// }
 
-System.Console.WriteLine("Write down anything, and I'll reverse it for you!");
-var userProvidedWord = System.Console.ReadLine();
-if (string.IsNullOrWhiteSpace(userProvidedWord))
+// ENTER 5 UNIQUE NUMBERS
+
+var uniqueNumbers = new List<int>();
+const int NUMBERS_REQUIRED = 5;
+
+while (true)
 {
-    System.Console.WriteLine("You didn't even write anything!");
-}
-else {
-    var individualChars = userProvidedWord.ToCharArray();
-    var reversedChars = (char[])individualChars.Clone();
-    Array.Reverse(reversedChars);
-    var reversedWord = new string(reversedChars);
-    System.Console.WriteLine(reversedWord);
+    System.Console.WriteLine("Please enter an integer that you haven't entered before!");
+    var userInput = System.Console.ReadLine();
+    var isAnInt = int.TryParse(userInput, out var userSuppliedInt);
+    if (!isAnInt)
+    {
+        System.Console.WriteLine("That's not even an integer!");
+        continue;
+    }
+    else 
+    {
+        if (uniqueNumbers.Contains(userSuppliedInt))
+        {
+            System.Console.WriteLine("You already told me that one!");
+            continue;
+        }
+        else 
+        {
+            uniqueNumbers.Add(userSuppliedInt);
+        }
+    };
+    if (uniqueNumbers.Count == NUMBERS_REQUIRED)
+    {
+        uniqueNumbers.Sort();
+        System.Console.WriteLine("Congratulations! In ascending order, your unique numbers are:");
+        foreach (var number in uniqueNumbers)
+        {
+            System.Console.WriteLine(number);
+        }
+        break;
+    }
 }
