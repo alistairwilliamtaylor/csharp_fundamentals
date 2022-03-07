@@ -82,28 +82,64 @@
 //     };
 // };
 
-System.Console.WriteLine("Enter five integers separated by commas, e.g. 5,9,3,1,6");
-var userInput = Console.ReadLine();
-bool hasNoContent = string.IsNullOrWhiteSpace(userInput);
-if (!hasNoContent)
+// System.Console.WriteLine("Enter five integers separated by commas, e.g. 5,9,3,1,6");
+// var userInput = Console.ReadLine();
+// bool hasNoContent = string.IsNullOrWhiteSpace(userInput);
+// if (!hasNoContent)
+// {
+//     var listOfEntries = userInput.Split(',');
+//     var largestEntry = 0;
+//     foreach (var entry in listOfEntries)
+//     {
+//         var userEntry = 0;
+//         var isValidInt = int.TryParse(entry, out userEntry);
+//         if (!isValidInt)
+//         {
+//             System.Console.WriteLine(string.Format("{0} was not a valid integer", entry));
+//         }
+//         if (userEntry > largestEntry)
+//         {
+//             largestEntry = userEntry;
+//         }
+//     }
+//     System.Console.WriteLine(string.Format("The largest number in your list was {0}", largestEntry));
+// }
+// else {
+//     System.Console.WriteLine("No input detected");
+// }
+
+//LIKES COUNTER
+var likedBy = new List<string>();
+
+while (true)
 {
-    var listOfEntries = userInput.Split(',');
-    var largestEntry = 0;
-    foreach (var entry in listOfEntries)
+    System.Console.WriteLine("Please enter a name. To quit, enter an empty name");
+    var nameProvided = System.Console.ReadLine();
+    if (string.IsNullOrWhiteSpace(nameProvided))
     {
-        var userEntry = 0;
-        var isValidInt = int.TryParse(entry, out userEntry);
-        if (!isValidInt)
-        {
-            System.Console.WriteLine(string.Format("{0} was not a valid integer", entry));
-        }
-        if (userEntry > largestEntry)
-        {
-            largestEntry = userEntry;
-        }
+        break;
     }
-    System.Console.WriteLine(string.Format("The largest number in your list was {0}", largestEntry));
+    else
+    {
+        likedBy.Add(nameProvided);
+    }
 }
-else {
-    System.Console.WriteLine("No input detected");
+
+const int MAXIMUM_LIKEDBY_NAMES = 2;
+
+if (likedBy.Count == 0)
+{
+    System.Console.WriteLine("What a lovely post. People will like it soon. Surely!");
 }
+else if (likedBy.Count == 1)
+{
+    System.Console.WriteLine(string.Format("{0} likes your post.", likedBy[0]));
+}
+else if (likedBy.Count == 2)
+{
+    System.Console.WriteLine(string.Format("{0} and {1} like your post", likedBy[0], likedBy[1]));
+}
+else if (likedBy.Count > MAXIMUM_LIKEDBY_NAMES)
+{
+    System.Console.WriteLine(string.Format("{0}, {1}, and {2} others like your post", likedBy[0], likedBy[1], likedBy.Count - MAXIMUM_LIKEDBY_NAMES));
+};
