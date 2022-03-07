@@ -159,7 +159,7 @@
 //     System.Console.WriteLine(reversedWord);
 // }
 
-// ENTER 5 UNIQUE NUMBERS
+//ENTER 5 UNIQUE NUMBERS
 
 var uniqueNumbers = new List<int>();
 const int NUMBERS_REQUIRED = 5;
@@ -190,10 +190,7 @@ while (true)
     {
         uniqueNumbers.Sort();
         System.Console.WriteLine("Congratulations! In ascending order, your unique numbers are:");
-        foreach (var number in uniqueNumbers)
-        {
-            System.Console.WriteLine(number);
-        }
+        System.Console.WriteLine(string.Join(", ", uniqueNumbers.ToArray()));
         break;
     }
 }
