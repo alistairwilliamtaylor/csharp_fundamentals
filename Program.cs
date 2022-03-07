@@ -108,38 +108,54 @@
 //     System.Console.WriteLine("No input detected");
 // }
 
-//LIKES COUNTER
-var likedBy = new List<string>();
+// //LIKES COUNTER
+// var likedBy = new List<string>();
 
-while (true)
-{
-    System.Console.WriteLine("Please enter a name. To quit, enter an empty name");
-    var nameProvided = System.Console.ReadLine();
-    if (string.IsNullOrWhiteSpace(nameProvided))
-    {
-        break;
-    }
-    else
-    {
-        likedBy.Add(nameProvided);
-    }
-}
+// while (true)
+// {
+//     System.Console.WriteLine("Please enter a name. To quit, enter an empty name");
+//     var nameProvided = System.Console.ReadLine();
+//     if (string.IsNullOrWhiteSpace(nameProvided))
+//     {
+//         break;
+//     }
+//     else
+//     {
+//         likedBy.Add(nameProvided);
+//     }
+// }
 
-const int MAXIMUM_LIKEDBY_NAMES = 2;
+// const int MAXIMUM_LIKEDBY_NAMES = 2;
 
-if (likedBy.Count == 0)
+// if (likedBy.Count == 0)
+// {
+//     System.Console.WriteLine("What a lovely post. People will like it soon. Surely!");
+// }
+// else if (likedBy.Count == 1)
+// {
+//     System.Console.WriteLine(string.Format("{0} likes your post.", likedBy[0]));
+// }
+// else if (likedBy.Count == 2)
+// {
+//     System.Console.WriteLine(string.Format("{0} and {1} like your post", likedBy[0], likedBy[1]));
+// }
+// else if (likedBy.Count > MAXIMUM_LIKEDBY_NAMES)
+// {
+//     System.Console.WriteLine(string.Format("{0}, {1}, and {2} others like your post", likedBy[0], likedBy[1], likedBy.Count - MAXIMUM_LIKEDBY_NAMES));
+// };
+
+//REVERSE THE NAME
+
+System.Console.WriteLine("Write down anything, and I'll reverse it for you!");
+var userProvidedWord = System.Console.ReadLine();
+if (string.IsNullOrWhiteSpace(userProvidedWord))
 {
-    System.Console.WriteLine("What a lovely post. People will like it soon. Surely!");
+    System.Console.WriteLine("You didn't even write anything!");
 }
-else if (likedBy.Count == 1)
-{
-    System.Console.WriteLine(string.Format("{0} likes your post.", likedBy[0]));
+else {
+    var individualChars = userProvidedWord.ToCharArray();
+    var reversedChars = (char[])individualChars.Clone();
+    Array.Reverse(reversedChars);
+    var reversedWord = new string(reversedChars);
+    System.Console.WriteLine(reversedWord);
 }
-else if (likedBy.Count == 2)
-{
-    System.Console.WriteLine(string.Format("{0} and {1} like your post", likedBy[0], likedBy[1]));
-}
-else if (likedBy.Count > MAXIMUM_LIKEDBY_NAMES)
-{
-    System.Console.WriteLine(string.Format("{0}, {1}, and {2} others like your post", likedBy[0], likedBy[1], likedBy.Count - MAXIMUM_LIKEDBY_NAMES));
-};
